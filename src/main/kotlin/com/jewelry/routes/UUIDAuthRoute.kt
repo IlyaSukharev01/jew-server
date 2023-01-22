@@ -26,14 +26,14 @@ fun Route.configureUUIDAuth() {
                 uuid = UUID.randomUUID()
 
             if (!uuidAuthDao.saveUUID(uuid))
-                call.respond(HttpStatusCode.InternalServerError, internalServerError)
+                call.respond(HttpStatusCode.InternalServerError, AuthenticationResponseData(internalServerError))
 
             call.respond(HttpStatusCode.OK, AuthenticationResponseData(uuidWasSent, uuid.toString()))
         }
         post("/verify") {
             call.receive<AuthenticationData>().let { data ->
-                if (!uuidAuthDao.isUUIDExists(UUID.fromString(data.uuidToken)))     call.respond(HttpStatusCode.Unauthorized, uuidIsNotCorrect)
-                else                                                                call.respond(HttpStatusCode.Accepted, uuidIsCorrect)
+                if (!uuidAuthDao.isUUIDExists(UUID.fromString(data.uuidToken)))     call.respond(HttpStatusCode.Unauthorized, AuthenticationResponseData(uuidIsNotCorrect))
+                else                                                                call.respond(HttpStatusCode.Accepted, AuthenticationResponseData(uuidIsCorrect))
             }
         }
     }
