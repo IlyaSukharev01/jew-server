@@ -1,15 +1,17 @@
 package com.jewelry
 
 import com.jewelry.plugins.*
-import io.ktor.server.application.*
 import com.jewelry.utils.DatabaseFactory.configurePostgresDatabase
+import io.ktor.server.application.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
+@ExperimentalUnsignedTypes
 fun Application.module() {
+    configureKoin()
+    configureSecurity()
     configureRouting()
     configureSerialization()
-    configureKoin()
     configurePostgresDatabase()
     configureValidator()
     configureStatusPages()

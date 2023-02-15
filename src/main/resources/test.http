@@ -1,9 +1,25 @@
-GET localhost:8080/uuid/get
+GET localhost:8080/auth/uuid
 
 ###
-POST localhost:8080/uuid/verify
+POST localhost:8080/auth/token
 Content-Type: application/json
 
 {
-  "uuidToken": "28eec340-681e-4f05-8708-663ac90a8137"
+  "uuid": ""
 }
+
+###
+GET localhost:8080/auth/token/update
+Authorization: Bearer
+
+###
+GET localhost:8080/catalog/all?filterBy=upward&limit=4&offset=1
+Authorization: Bearer
+
+###
+GET localhost:8080/item/5
+Authorization: Bearer
+
+###
+GET localhost:8080/catalog/bracelet
+Authorization: Bearer

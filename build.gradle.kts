@@ -25,8 +25,11 @@ repositories {
 }
 
 dependencies {
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
+    implementation("io.ktor:ktor-server-auth-jwt:$ktor_version")
     implementation("io.ktor:ktor-server-request-validation:$ktor_version")
     implementation("org.postgresql:postgresql:$postgres_version")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
@@ -39,6 +42,9 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-host-common-jvm:2.2.2")
     implementation("io.ktor:ktor-server-status-pages-jvm:2.2.2")
+    implementation("io.ktor:ktor-server-auth-jvm:2.2.2")
+    implementation("io.ktor:ktor-server-auth-jwt-jvm:2.2.2")
+    implementation("io.ktor:ktor-server-auto-head-response-jvm:2.2.2")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
