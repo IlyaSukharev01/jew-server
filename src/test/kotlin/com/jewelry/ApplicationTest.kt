@@ -7,6 +7,7 @@ import kotlin.test.*
 import io.ktor.http.*
 import com.plugins.*
 import com.jewelry.plugins.configureRouting
+import io.ktor.client.call.body
 
 class ApplicationTest {
     @Test

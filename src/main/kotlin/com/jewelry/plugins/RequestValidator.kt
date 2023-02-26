@@ -1,21 +1,22 @@
 package com.jewelry.plugins
 
-import com.jewelry.dto.AuthenticationData
-import com.jewelry.utils.ServerResponses.incorrectUUIDFormat
-import com.jewelry.utils.ServerResponses.incorrectUUIDLength
+import com.jewelry.dto.UUIDData
+import com.jewelry.exceptions.RequestInformationExceptions
+import com.jewelry.utils.ServerResponses.uuidBadFormat
+import com.jewelry.utils.ServerResponses.uuidBadFormatCode
 import io.ktor.server.application.*
 import io.ktor.server.plugins.requestvalidation.*
+import java.util.*
 
 fun Application.configureValidator() {
     install(RequestValidation) {
-        validate<AuthenticationData> {
-            it.uuid.forEach { sym ->
-                if (!Character.isDigit(sym) && !Character.isLetter(sym) && sym != '-') {
-                    return@validate ValidationResult.Invalid(incorrectUUIDFormat)
-                }
+        validate<UUIDData> {data ->
+            try {
+                UUID.fromString(data.uuid)
+                ValidationResult.Valid
+            } catch (e: IllegalArgumentException) {
+                throw RequestInformationExceptions(uuidBadFormatCode, uuidBadFormat)
             }
-            if (it.uuid.length != 36)  ValidationResult.Invalid(incorrectUUIDLength)
-            else                            ValidationResult.Valid
         }
     }
 }

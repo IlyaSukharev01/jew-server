@@ -1,11 +1,17 @@
-GET localhost:8080/auth/uuid
+POST localhost:8080/auth/uuid
+Content-Type: application/json
+
+{
+  "deviceType": "123"
+}
+
 
 ###
 POST localhost:8080/auth/token
 Content-Type: application/json
 
 {
-  "uuid": ""
+  "uuid": "721c3d4e-d7ef-4c6c-8639-489339938e1d"
 }
 
 ###
@@ -13,8 +19,16 @@ GET localhost:8080/auth/token/update
 Authorization: Bearer
 
 ###
-GET localhost:8080/catalog/all?filterBy=upward&limit=4&offset=1
+GET localhost:8080/catalog?orderBy=new&limit=5&offset=3
 Authorization: Bearer
+
+###
+GET localhost:8080/catalog/earrings?orderBy=new&limit=1&offset=1
+Authorization: Bearer
+
+###
+GET localhost:8080/item/3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDo4MDgwLyIsImlzcyI6Imh0dHA6Ly8wLjAuMC4wOjgwODAvIiwiZXhwIjoxNjc3MzE4NzgyLCJ1dWlkIjoiNzIxYzNkNGUtZDdlZi00YzZjLTg2MzktNDg5MzM5OTM4ZTFkIn0.bpxl8i7FLKeLVkgW1DC5inLCbh_RrjU-9cfhoSIFrXc
 
 ###
 GET localhost:8080/item/5

@@ -4,17 +4,16 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CatalogResponseData (
-    val message: String,
-    val list: List<PreviewJewelryData>? = null,
+    val list: List<PreviewJewelryData>
 )
 
 @Serializable
 data class PreviewJewelryData(
-    val jewId: ULong,
-    val jewName: String,
-    val price: UInt,
+    val jewelryId: Long,
+    val jewelryName: String,
+    val price: Int,
     val baseMaterial: String,
     val gemMaterial: String? = null,
-    val jewCropImagesPaths: List<String>,
+    val jewelryCropImagesPaths: List<String>,
     val isSavedByUser: Boolean,
 )

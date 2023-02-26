@@ -19,12 +19,12 @@ import org.koin.logger.slf4jLogger
 fun Application.configureKoin() {
     val koinModule = module {
         single<UUIDAuthManagement> { UUIDAuthManagementIMPL() }
-        single<JewelryManagement> {JewelryManagementIMPL()}
-        single<JewelryMediaManagement> {JewelryMediaManagementIMPL()}
-        single<JewelrySavedManagement> {JewelrySavedManagementIMPL()}
+        single<JewelryManagement> { JewelryManagementIMPL() }
+        single<JewelryMediaManagement> { JewelryMediaManagementIMPL() }
+        single<JewelrySavedManagement> { JewelrySavedManagementIMPL() }
         single<JwtCooker> { JwtCookerIMPL() }
     }
-    
+
     install(Koin) {
         slf4jLogger()
         modules(koinModule)

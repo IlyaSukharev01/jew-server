@@ -12,7 +12,7 @@ fun Application.module() {
     configureSecurity()
     configureRouting()
     configureSerialization()
-    configurePostgresDatabase()
     configureValidator()
     configureStatusPages()
+    configurePostgresDatabase()
 }

@@ -4,6 +4,7 @@ import com.jewelry.dao.authentication.uuid.UUIDAuthTable
 import com.jewelry.dao.jewelry_media.JewelryMediaTable
 import com.jewelry.dao.jewelry_items.JewelryItemsTable
 import com.jewelry.dao.jewelry_saved.JewelrySavedTable
+import com.jewelry.dao.jewelry_types.JewelryTypesTable
 import com.typesafe.config.ConfigFactory
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,6 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 
-@ExperimentalUnsignedTypes
 object DatabaseFactory {
     fun configurePostgresDatabase() {
         val config = HoconApplicationConfig(ConfigFactory.load())
@@ -26,9 +26,11 @@ object DatabaseFactory {
             SchemaUtils.create(UUIDAuthTable)
             SchemaUtils.create(JewelryMediaTable)
             SchemaUtils.create(JewelryItemsTable)
+            SchemaUtils.create(JewelryTypesTable)
             SchemaUtils.create(JewelrySavedTable)
         }
     }
+
     suspend fun <T> dbQuery(block: suspend () -> T): T =
         newSuspendedTransaction(Dispatchers.IO) { block() }
 }

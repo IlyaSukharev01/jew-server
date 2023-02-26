@@ -3,16 +3,16 @@ package com.jewelry.dto
 import java.time.LocalDate
 
 data class JewelryData (
-    val jewId: ULong,
-    val jewName: String,
-    val jewType: String,
-    val price: UInt,
+    val jewelryId: Long? = null,
+    val jewelryName: String,
+    val jewelryType: Int,
+    val price: Int,
     val baseMaterial: String,
     val weight: Double? = null,
     val gemMaterial: String? = null,
-    val gemsCount: UInt? = null,
-    val probe: UInt? = null,
-    val views: ULong = 0U,
+    val gemsCount: Int? = null,
+    val probe: Int? = null,
+    val views: Long = 0,
     val addedDate: LocalDate? = null,
 )
 
