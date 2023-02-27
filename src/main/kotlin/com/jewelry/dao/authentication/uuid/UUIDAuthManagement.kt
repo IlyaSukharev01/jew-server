@@ -12,7 +12,6 @@ interface UUIDAuthManagement {
     suspend fun addNew (deviceType: String, ip: String): UUID
     suspend fun isExists(uuid: UUID): Boolean
 }
-@ExperimentalUnsignedTypes
 class UUIDAuthManagementIMPL : UUIDAuthManagement{
     override suspend fun addNew(deviceType: String, ip: String): UUID = dbQuery {
         UUIDAuthManager.new (UUID.randomUUID()){
@@ -28,7 +27,6 @@ class UUIDAuthManagementIMPL : UUIDAuthManagement{
     }
 }
 
-@ExperimentalUnsignedTypes
 class UUIDAuthManager (uuid: EntityID<UUID>) : UUIDEntity(uuid) {
     companion object : UUIDEntityClass<UUIDAuthManager>(UUIDAuthTable)
 

@@ -10,7 +10,6 @@ plugins {
     id("io.ktor.plugin") version "2.2.2"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
 }
-
 group = "com"
 version = "0.0.1"
 application {
@@ -19,12 +18,12 @@ application {
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation("io.bkbn:kompendium-core:latest.release")
     implementation("io.ktor:ktor-server-resources:$ktor_version")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
     implementation("io.ktor:ktor-server-auth:$ktor_version")

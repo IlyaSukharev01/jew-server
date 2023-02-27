@@ -3,30 +3,29 @@ package com.jewelry.plugins
 import com.jewelry.routes.configureAuthenticateRoutes
 import com.jewelry.routes.catalog.configureCatalogRoutes
 import com.jewelry.routes.items.configureJewItemRoutes
-import com.jewelry.routes.test.testRoutes
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.resources.*
+import java.io.File
 
 fun Application.configureRouting() {
     install(Resources)
 
     routing {
-        testRoutes()
         configureAuthenticateRoutes()
         configureCatalogRoutes()
         configureJewItemRoutes()
 
         static("/") {
-            staticBasePackage = "static"
+            staticRootFolder = File("static")
 
             static("images") {
-                resources("crop")
-                resources("full")
+                files("crop")
+                files("full")
             }
             static("videos") {
-                resources("mp4")
+                files("mp4")
             }
         }
 

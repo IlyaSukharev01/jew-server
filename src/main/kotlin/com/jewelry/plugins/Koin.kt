@@ -15,7 +15,6 @@ import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
-@ExperimentalUnsignedTypes
 fun Application.configureKoin() {
     val koinModule = module {
         single<UUIDAuthManagement> { UUIDAuthManagementIMPL() }

@@ -11,9 +11,6 @@ import io.ktor.server.response.*
 
 fun Application.configureStatusPages() {
     install(StatusPages) {
-        exception<RequestValidationException> { call, cause ->
-            call.respond(HttpStatusCode.BadRequest, cause.reasons.single())
-        }
         exception<NumberFormatException> { call, cause ->
             call.respond(HttpStatusCode.BadRequest, "${cause.message}")
         }

@@ -23,12 +23,12 @@ GET localhost:8080/catalog?orderBy=new&limit=5&offset=3
 Authorization: Bearer
 
 ###
-GET localhost:8080/catalog/earrings?orderBy=new&limit=1&offset=1
-Authorization: Bearer
+GET localhost:8080/catalog/earrings
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAvIiwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwLyIsImV4cCI6MTY3NzQxNDczOCwidXVpZCI6IjcyMWMzZDRlLWQ3ZWYtNGM2Yy04NjM5LTQ4OTMzOTkzOGUxZCJ9.YrwtU-NfbYoEk5X498u9FrA6UNzGAYBk0_VYkb8FnUA
 
 ###
-GET localhost:8080/item/3
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDo4MDgwLyIsImlzcyI6Imh0dHA6Ly8wLjAuMC4wOjgwODAvIiwiZXhwIjoxNjc3MzE4NzgyLCJ1dWlkIjoiNzIxYzNkNGUtZDdlZi00YzZjLTg2MzktNDg5MzM5OTM4ZTFkIn0.bpxl8i7FLKeLVkgW1DC5inLCbh_RrjU-9cfhoSIFrXc
+GET localhost:8080/item/11
+Authorization:
 
 ###
 GET localhost:8080/item/5

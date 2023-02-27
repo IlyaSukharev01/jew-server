@@ -74,7 +74,7 @@ class JewelryManagementIMPL : JewelryManagement {
 
     override suspend fun getAllJewelriesByType(type: String, order: String?, limit: Int, offset: Long): List<JewelryData> = dbQuery {
         val typeId = JewelryTypesTable.select { JewelryTypesTable.type eq type }.limit(1).singleOrNull()?.let {
-            it[JewelryTypesTable.id].value } ?: throw ExposedException(suchTypeIsNotExistsCode, suchTypeIsNotExists)
+            it[JewelryTypesTable.id].value } ?: throw ExposedException(suchTypeIsNotExistsCode, suchTypeIsNotExists, type)
 
         getOrderedItems (order, JewelryItemsTable.select {JewelryItemsTable.jewelryType eq typeId}.limit(limit, offset))
     }

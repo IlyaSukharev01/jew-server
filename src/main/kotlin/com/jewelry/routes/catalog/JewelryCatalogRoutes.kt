@@ -21,6 +21,8 @@ fun Route.configureCatalogRoutes() {
     val jewelrySavedManagementDao by inject<JewelrySavedManagement>()
 
     authenticate("app") {
+        documentation()
+
         get<Catalog> { catalog ->
             val uuid = call.principal<JWTPrincipal>()?.payload?.getClaim("uuid")!!.asString()
 
